@@ -4,8 +4,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from pipeline.schemas_extraction import ExtractionOutput
-from pipeline.schemas_workflow import Workflow
+from schemas.schemas_extraction import ExtractionOutput
+from schemas.schemas_workflow import Workflow
 from pipeline.validate_citations import validate_citations
 from pipeline.validate_workflow import validate_workflow_graph
 

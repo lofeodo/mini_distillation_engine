@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from typing import Dict, List, Any, Set
 
-from pipeline.schemas_workflow import Workflow, DecisionNode, ActionNode, EndNode
+from schemas.schemas_workflow import Workflow, DecisionNode, ActionNode, EndNode
 
 
 class WorkflowValidationError(ValueError):

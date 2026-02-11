@@ -1,0 +1,277 @@
+1. No 628002
+2. Ajustement de la médication antihypertensive de première intention
+3. Élaboré avec la collaboration d’un comité consultatif formé de cliniciens et d’experts québécois
+4. Validé par le Comité d’excellence clinique en usage optimal du médicament, des protocoles médicaux nationaux et des ordonnances (UOM-PMNO) de l’Institut national d’excellence en santé et en services sociaux (INESSS)
+5. SITUATION CLINIQUE OU CLIENTÈLE
+6. ► Personne de 18 ans ou plus atteinte d’hypertension artérielle
+7. CONTRE-INDICATIONS À L’APPLICATION DE CE PROTOCOLE
+8. ► Grossesse ou allaitement
+9. ► Pression artérielle systolique supérieure ou égale à 180 mm Hg OU pression artérielle diastolique supérieure ou égale à 110 mm Hg
+10. DIRECTIVES
+11. 1. PRÉCAUTIONS
+12. Consulter le guide Prise en charge systématisée des personnes atteintes d’hypertension artérielle, élaboré par la
+13. Société québécoise d’hypertension artérielle (SQHA), pour les méthodes de mesure de la pression artérielle.
+14. Optimiser avec une équipe interprofessionnelle les habitudes de vie et la prise en charge des conditions qui font augmenter la pression artérielle.
+15. 2. PRINCIPES GÉNÉRAUX
+16. Atteindre les valeurs cibles chez les personnes atteintes d’hypertension artérielle afin de prévenir les complications cardiovasculaires et cérébrovasculaires.
+17. INESSS | Protocole médical national – Médication antihypertensive 1
+18. Mars 2020
+19. 3. INVESTIGATION
+20. 3.1 Analyses et examens de laboratoire pour le suivi de l’ajustement du traitement de l’hypertension artérielle
+21. Effectuer les analyses et examens de laboratoire pour le suivi de l’ajustement du traitement de l’hypertension artérielle selon le tableau ci-dessous :
+22. ANALYSES ET EXAMENS DE LABORATOIRE
+23. 10 à 14 jours
+24. 10 à 14 jours
+25. Avant le début après Une fois par
+26. Analyses / examens Au diagnostic après le début du traitement l’ajustement de année du traitement la dose
+27. Diurétiques Diurétiques Diurétiques
+28. IECA* IECA* IECA*
+29. ARA† ARA† ARA†
+30. Ions : sodium, potassium     
+31. Créatinine     
+32. Glycémie à jeun ou
+33.   hémoglobine glyquée (HbA )
+34. 1C
+35. Bilan lipidique  
+36. Analyse d’urine ou sommaire
+37.  microscopique des urines
+38. (SMU)
+39. Électrocardiogramme (ECG) 
+40. * Inhibiteurs de l’enzyme de conversion de l’angiotensine (IECA)
+41. † Antagonistes des récepteurs de l’angiotensine II (ARA)
+42. INESSS | Protocole médical national – Médication antihypertensive 2
+43. Mars 2020
+44. 4. INFORMATION GÉNÉRALE SUR LA MÉDICATION ANTIHYPERTENSIVE ET MODALITÉS D’AJUSTEMENT
+45. POSOLOGIQUE
+46. L’information générale sur la médication antihypertensive de première intention présentée ci-dessous n’est pas exhaustive.
+47. 4.1 Diurétiques thiazidiques et apparentés
+48. INFORMATION GÉNÉRALE POUR LA CLASSE DES DIURÉTIQUES THIAZIDIQUES ET APPARENTÉS
+49. Contre-indications Antécédent de réaction allergique ou intolérance connue aux diurétiques thiazidiques ou apparentés
+50. Anurie
+51. Précautions Possibilité d’allergie croisée avec les sulfas
+52. Goutte (surveillance recommandée de l’acide urique et des symptômes)
+53. La prise du médicament doit cesser temporairement si présence de signes de déshydratation
+54. (vomissements, diarrhées importantes) afin d’éviter une insuffisance rénale aiguë
+55. Effets indésirables Déshydratation médicamenteux les plus Dysfonction sexuelle (homme et femme) fréquents
+56. Hyperuricémie
+57. Hypokaliémie, hyponatrémie, hypomagnésémie
+58. Insuffisance rénale
+59. Interactions médicamenteuses Anti-inflammatoires non stéroïdiens (AINS) (coxibs et non coxibs) : ↓ de l’effet antihypertenseur les plus significatives Calcium : ↓ de l’excrétion rénale du calcium
+60. Corticostéroïdes : ↑ du risque d’hypokaliémie et ↓ de l’effet antihypertenseur
+61. Digoxine : ↑ du risque de toxicité à la digoxine lié aux perturbations électrolytiques
+62. Hypoglycémiants oraux : ↑ possible de la glycémie
+63. Lithium : ↑ de la lithémie (risque de toxicité accrue)
+64. Inhibiteur du SGLT2 : peut accroître le risque de déshydratation et/ou d’hypotension
+65. Ajuster les diurétiques thiazidiques et apparentés selon les modalités d’ajustement suivantes :
+66. MODALITÉS D’AJUSTEMENT POSOLOGIQUE POUR LA CLASSE DES DIURÉTIQUES THIAZIDIQUES ET APPARENTÉS
+67. Médicaments Modalités d’ajustement posologique†
+68. Chlorthalidone 12,5 → 25 mg PO DIE
+69. Hydrochlorothiazide (HCTZ) 12,5 → 25 mg PO DIE
+70. Indapamide 0,625 → 1,25 → 2,5 mg PO DIE
+71. *L’intervalle d’ajustement minimal indiqué représente le temps requis généralement pour obtenir l’effet maximal.
+72. †Les doses présentées sont celles recommandées dans la majorité des cas.
+73. INESSS | Protocole médical national – Médication antihypertensive 3
+74. Mars 2020
+75. 4.2 Inhibiteurs de l’enzyme de conversion de l’angiotensine (IECA)
+76. INFORMATION GÉNÉRALE POUR LA CLASSE DES IECA
+77. Contre-indications Antécédent de réaction allergique, intolérance ou antécédent d’angiœdème lié à un traitement antérieur avec un IECA ou un ARA
+78. Sténose bilatérale des artères rénales ou sténose unilatérale sur un rein unique
+79. Utilisation concomitante avec un ARA ou un inhibiteur direct de la rénine
+80. Grossesse ou allaitement
+81. Précautions Attention à l’hyperkaliémie, surtout chez les personnes atteintes d’insuffisance rénale chronique, d’insuffisance cardiaque, de diabète ou chez les personnes qui prennent des diurétiques épargneurs de potassium ou des suppléments potassiques.
+82. La prise du médicament doit cesser temporairement si présence de signes de déshydratation
+83. (vomissements, diarrhées importantes) afin d’éviter une insuffisance rénale aiguë.
+84. La réévaluation de la posologie ou une interruption du traitement peuvent être nécessaires si l’instauration de l’IECA induit une augmentation de la créatinine de base de plus de 30 % ou en présence d’insuffisance rénale grave.
+85. Prudence chez les personnes à risque d’hypotension ou d’étourdissements lors de l’administration concomitante d’un IECA et d’un inhibiteur du SGLT2
+86. Effets indésirables Toux médicamenteux les plus Étourdissements fréquents
+87. Hyperkaliémie
+88. Angiœdème (rare, mais grave)
+89. Interactions médicamenteuses Agents causant une ↑ additive des taux de potassium sérique (p. ex. supplément de potassium, les plus significatives diurétiques épargneurs de potassium, succédanés de sel, héparine, triméthoprime)
+90. AINS (coxibs et non coxibs) : ↓ de l’effet antihypertenseur, ↑ de la créatinine
+91. Lithium : ↑ de la lithémie (risque de toxicité accru)
+92. Ajuster les IECA selon les modalités d’ajustement suivantes :
+93. MODALITÉS D’AJUSTEMENT POSOLOGIQUE POUR LA CLASSE DES IECA
+94. Médicaments et combinaisons à
+95. Modalités d’ajustement posologique† dose fixe
+96. Bénazépril 5 → 10 → 20 → 40 mg PO DIE
+97. Captopril 25 → 37,5 → 50 mg PO BID → 50 mg PO TID
+98. Cilazapril 2,5 → 5 → 10 mg PO DIE
+99. Cilazapril / HCTZ 5/12,5 → 10/25 mg PO DIE
+100. Énalapril 5 → 10 → 20 → 40 mg PO DIE
+101. Énalapril / HCTZ 5/12,5 → 10/25 mg PO DIE
+102. Fosinopril 10 → 20 → 40 mg PO DIE
+103. Lisinopril 10 → 20 → 40 mg PO DIE
+104. Lisinopril / HCTZ 10/12,5 → 20/12,5 → 20/25 → 40/25 mg PO DIE
+105. Périndopril 2 → 4 → 8 mg PO DIE
+106. Périndopril / Indapamide 2/0,625 → 4/1,25 → 8/2,5 mg PO DIE
+107. Quinapril 10 → 20 → 40 mg PO DIE
+108. Quinapril / HCTZ 10/12,5 → 20/12,5 → 20/25 → 40/25 mg PO DIE
+109. Ramipril 2,5 → 5 → 10 mg PO DIE
+110. Ramipril / HCTZ 2,5/12,5 → 5/12,5 → 10/12,5 →10/25 mg PO DIE
+111. Trandolapril 1 → 2 → 4 mg PO DIE
+112. *L’intervalle d’ajustement minimal indiqué représente le temps requis généralement pour obtenir l’effet maximal.
+113. † Les doses présentées sont celles recommandées dans la majorité des cas.
+114. INESSS | Protocole médical national – Médication antihypertensive 4
+115. Mars 2020
+116. 4.3 Antagonistes des récepteurs de l’angiotensine II (ARA)
+117. INFORMATIONS GÉNÉRALES POUR LA CLASSE DES ARA
+118. Contre-indications Antécédent de réaction allergique, intolérance ou antécédent d’angiœdème lié à un traitement antérieur avec un ARA
+119. Sténose bilatérale grave des artères rénales ou sténose unilatérale grave sur un rein unique
+120. Utilisation concomitante avec un IECA ou un inhibiteur direct de la rénine
+121. Grossesse ou allaitement
+122. Précautions Attention à l’hyperkaliémie, surtout chez les personnes atteintes d’insuffisance rénale chronique, d’insuffisance cardiaque, de diabète ou chez les personnes qui prennent des diurétiques épargneurs de potassium ou des suppléments potassiques.
+123. Le médicament doit être cessé temporairement si présence de signes de déshydratation
+124. (vomissements, diarrhées importantes) afin d’éviter une insuffisance rénale aiguë.
+125. La réévaluation de la posologie ou une interruption du traitement peuvent être nécessaires si l’instauration de l’ARA induit une augmentation de la créatinine de base de plus de 30 % ou en présence d’insuffisance rénale grave.
+126. Antécédent d’angiœdème lié à un traitement antérieur à un IECA
+127. Prudence chez les personnes à risque d’hypotension ou d’étourdissements lors de l’administration concomitante d’un ARA et d’un inhibiteur du SGLT2
+128. Effets indésirables Céphalées médicamenteux les plus Étourdissements fréquents
+129. Hyperkaliémie
+130. Angiœdème (rare, mais grave)
+131. Interactions médicamenteuses Agents causant une ↑ additive des taux de potassium sérique (p. ex. supplément de potassium, les plus significatives diurétiques épargneurs de potassium, succédanés de sel, héparine, triméthoprime)
+132. AINS (coxibs et non coxibs) : ↓ de l’effet antihypertenseur, ↑ de la créatinine
+133. Lithium : ↑ de la lithémie (risque de toxicité accrue)
+134. Ajuster les ARA selon les modalités d’ajustement suivantes :
+135. MODALITÉS D’AJUSTEMENT POSOLOGIQUE POUR LA CLASSE DES ARA
+136. Médicaments et combinaisons à
+137. Modalités d’ajustement posologique† dose fixe
+138. Azilsartan 40 → 80 mg PO DIE
+139. Azilsartan / Chlorthalidone 40/12,5 → 40/25 mg PO DIE
+140. Candésartan 4 → 8 → 16 → 32 mg PO DIE
+141. Candésartan / HCTZ 16/12,5 → 32/12,5 → 32/25 mg PO DIE
+142. Irbésartan 75 → 150 → 300 mg PO DIE
+143. Irbésartan / HCTZ 150/12,5 → 300/12,5 → 300/25 mg PO DIE
+144. Losartan 50 → 100 mg PO DIE
+145. Losartan / HCTZ 50/12,5 → 100/12,5 → 100/25 mg PO DIE
+146. Olmésartan 20 → 40 mg PO DIE
+147. Olmésartan / HCTZ 20/12,5 → 40/12,5 → 40/25 mg PO DIE
+148. Telmisartan 40 → 80 mg PO DIE
+149. Telmisartan / HCTZ 80/12,5 → 80/25 mg PO DIE
+150. Valsartan 80 → 160 → 320 mg PO DIE
+151. Valsartan / HCTZ 80/12,5 → 160/12,5 → 160/25 (ou 320/12,5) → 320/25 mg PO DIE
+152. *L’intervalle d’ajustement minimal indiqué représente le temps requis généralement pour obtenir l’effet maximal.
+153. † Les doses présentées sont celles recommandées dans la majorité des cas.
+154. INESSS | Protocole médical national – Médication antihypertensive 5
+155. Mars 2020
+156. 4.4 Bloquants des récepteurs β-adrénergiques (β-bloquants)
+157. INFORMATION GÉNÉRALE POUR LA CLASSE DES β-BLOQUANTS
+158. Contre-indications Antécédent de réaction allergique ou intolérance aux β-bloquants
+159. Blocs auriculo-ventriculaires (AV) du 2e et du 3e degré
+160. Bradycardie sinusale d’origine diverse
+161. Maladie du sinus (sauf en cas de port d’un stimulateur cardiaque permanent)
+162. Précautions Éviter l’interruption soudaine de la prise du médicament
+163. Asthme et maladie pulmonaire obstructive chronique (MPOC) (privilégier un β-bloquant cardiosélectif)
+164. Insuffisance cardiaque non maîtrisée
+165. Bloc AV du 1er degré
+166. Diabète (peut masquer certains signes d’hypoglycémie)
+167. Hyperthyroïdie (peut masquer certains signes)
+168. Troubles graves de la circulation artérielle périphérique (p. ex. syndrome de Raynaud)
+169. Fréquence cardiaque : avant le début du traitement et lors de l’ajustement de la dose
+170. Effets indésirables Bloc AV médicamenteux les plus Bradycardie fréquents
+171. Bronchospasme
+172. Céphalées
+173. Défaillance cardiaque
+174. Dysfonction sexuelle (homme)
+175. Effets sur le système nerveux central (dépression, cauchemars, insomnie)
+176. Étourdissements
+177. Exacerbation du syndrome de Raynaud
+178. Fatigue
+179. Hyperglycémie
+180. Intolérance à l’effort
+181. Nausées
+182. Interactions médicamenteuses Agents causant de la bradycardie additive (p. ex. amiodarone, dipyridamole, disopyramide, les plus significatives inhibiteurs des cholinestérases)
+183. Antiarythmiques : prolongation de la conduction sino-auriculaire (SA) et AV
+184. Bloquants des canaux calciques non dihydropyridiniques (BCC non-DHP) : prolongation de la conduction SA et AV
+185. Clonidine : hypertension rebond si arrêt brusque de la clonidine, bradycardie
+186. Digoxine : ↓ importante de la fréquence cardiaque
+187. INESSS | Protocole médical national – Médication antihypertensive 6
+188. Mars 2020
+189. Bloquants des récepteurs β-adrénergiques (β-bloquants) (suite)
+190. Ajuster les β-bloquants selon les modalités d’ajustement suivantes :
+191. MODALITÉS D’AJUSTEMENT POSOLOGIQUE POUR LA CLASSE DES β-BLOQUANTS
+192. Médicaments Modalités d’ajustement posologique†
+193. Acébutolol 100 → 200 → 400 mg PO DIE
+194. Aténolol 25 → 50 → 100 mg PO DIE
+195. Bisoprolol 2,5 → 5 → 10 mg PO DIE
+196. Labétalol 100 → 200 → 400 mg PO BID
+197. Métoprolol (libération
+198. 25 → 50 → 75 → 100 mg PO BID immédiate)
+199. Métoprolol (libération
+200. 100 → 200 mg PO DIE prolongée)
+201. Nadolol 20 → 40 → 80 → 120 → 160 mg PO DIE
+202. Nébivolol 2,5 → 5 → 10 mg PO DIE
+203. Pindolol 5 → 7,5 → 10 mg PO BID
+204. Propranolol (libération
+205. 40 → 80 mg PO BID immédiate)
+206. Propranolol (libération
+207. 60 → 80 → 120 → 160 → 180 mg PO DIE prolongée)
+208. Timolol 5 → 10 → 15 mg PO BID
+209. *L’intervalle d’ajustement minimal indiqué représente le temps requis généralement pour obtenir l’effet maximal.
+210. † Les doses présentées sont celles recommandées dans la majorité des cas.
+211. INESSS | Protocole médical national – Médication antihypertensive 7
+212. Mars 2020
+213. 4.5 Bloquants des canaux calciques (BCC)
+214. INFORMATION GÉNÉRALE POUR LA CLASSE DES BCC
+215. Contre-indications Bloquants des canaux calciques dihydropyridiniques (BCC DHP) et
+216. Bloquants des canaux calciques non dihydropyridiniques (BCC non-DHP) :
+217. Antécédent de réaction allergique ou intolérance connue aux BCC
+218. BCC non-DHP :
+219. Blocs AV du 2e et du 3e degré
+220. Dysfonction ventriculaire gauche grave (fraction d’éjection inférieure à 35 %)
+221. Maladie du sinus (sauf en cas de port d’un stimulateur cardiaque permanent)
+222. Précautions BCC DHP :
+223. Le jus de pamplemousse peut augmenter significativement l’effet antihypertenseur.
+224. BCC non-DHP :
+225. Utiliser avec précaution en combinaison avec un β-bloquant.
+226. Fréquence cardiaque : avant le début du traitement et lors de l’ajustement de la dose
+227. Effets indésirables BCC DHP :
+228. médicamenteux les plus Bouffées vasomotrices fréquents
+229. Céphalées
+230. Étourdissements
+231. Œdème des membres inférieurs
+232. Tachycardie réflexe
+233. BCC non-DHP :
+234. Bloc AV
+235. Bradycardie
+236. Céphalées
+237. Constipation (surtout vérapamil)
+238. Étourdissements
+239. Œdème des membres inférieurs
+240. Interactions médicamenteuses Digoxine : ↑ du taux sérique de digoxine par ↓ de son élimination produite par le vérapamil ou le les plus significatives diltiazem
+241. Ajuster les BCC selon les modalités d’ajustement suivantes :
+242. MODALITÉS D’AJUSTEMENT POSOLOGIQUE POUR LA CLASSE DES BCC
+243. Médicaments Modalités d’ajustement posologique†
+244. Bloquants des canaux calciques dihydropyridiniques (BCC-DHP)
+245. Amlodipine 2,5 → 5 → 7,5 → 10 mg PO DIE
+246. Félodipine (libération
+247. 2,5 → 5 → 7,5 → 10 mg PO DIE prolongée)
+248. Nifédipine (libération
+249. 20→ 30 → 60 → 90 mg PO DIE prolongée)
+250. Bloquants des canaux calciques non dihydropyridiniques (BCC non-DHP)
+251. Diltiazem (libération prolongée) 120 → 180 → 240 → 360 mg PO DIE
+252. Vérapamil (libération prolongée) 120 → 240 mg PO DIE → 240 mg PO AM et 120 mg PO PM → 240 mg PO BID
+253. *L’intervalle d’ajustement minimal indiqué représente le temps requis généralement pour obtenir l’effet maximal.
+254. †Les doses présentées sont celles recommandées dans la majorité des cas.
+255. INESSS | Protocole médical national – Médication antihypertensive 8
+256. Mars 2020
+257. 5. SITUATIONS QUI EXIGENT UNE ATTENTION PARTICULIÈRE, UNE RÉÉVALUATION OU UNE INVESTIGATION
+258. SUPPLÉMENTAIRE
+259. ► Intolérance à la médication.
+260. ► Apparition d’une contre-indication à l’usage de la médication antihypertensive, incluant la grossesse, l’allaitement ou une pression artérielle >180/110 mm Hg, en cours de traitement.
+261. ► Apparition ou aggravation de signes ou symptômes évoquant une atteinte des organes cibles, notamment :
+262. • Cerveau et yeux : céphalées, vertiges, trouble de la vision, trouble de la parole, symptômes de déficit moteur ou sensitif (faiblesse, engourdissement, perte de sensibilité).
+263. • Cœur : palpitations, douleur thoracique, dyspnée, œdème périphérique.
+264. • Reins : polyurie, nycturie, hématurie.
+265. • Artères périphériques : extrémités froides, claudication intermittente, lésions ischémiques de la peau, absence, réduction ou asymétrie des pouls, indice de pression systolique cheville-bras inférieure à 0,9.
+266. ► Les personnes dont les cibles de pression artérielle ne sont pas atteintes après trois mois de suivi.
+267. ► Les personnes dont les cibles de pression artérielle ne sont pas atteintes avec la dose maximale inscrite au protocole médical national ou prescrite par le prescripteur autorisé ou la dose maximale tolérée.
+268. ► Résultat d’analyse de laboratoire en dehors de l’écart des valeurs normales.
+269. ► Diagnostic d’insuffisance rénale (débit de filtration glomérulaire estimé [DFGe] inférieur à 60 ml/minute/1,73 m2).
+270. ► Une augmentation de plus de 20 % de la créatinine après l’introduction d’un antihypertenseur.
+271. ► Une fréquence cardiaque inférieure ou égale à 60 battements/minute pour les personnes traitées avec un βbloquant ou un bloquant des canaux calciques non dihydropyridinique (BCC non-DHP).
+272. ► Hypotension orthostatique suspectée ou pression artérielle systolique inférieure à 110 mm Hg.
+273. ► Inobservance à la médication régulièrement constatée.
+274. RÉFÉRENCES
+275. Ce protocole s’appuie sur des recommandations de bonne pratique les plus récentes, bonifiées à l’aide d’informations contextuelles et du savoir expérientiel de cliniciens et d’experts québécois. Pour plus de détails sur le processus d’élaboration de ce protocole médical et pour consulter les références, se référer au rapport en soutien aux travaux.
+276. INESSS | Protocole médical national – Médication antihypertensive 9
+277. Mars 2020

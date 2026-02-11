@@ -1,0 +1,82 @@
+{
+  "meta": {
+    "min_line": 1,
+    "max_line": 277,
+    "num_lines": 277,
+    "num_chunks": 17
+  },
+  "chunk_bounds": {
+    "c0001": {
+      "line_start": 1,
+      "line_end": 15
+    },
+    "c0002": {
+      "line_start": 16,
+      "line_end": 35
+    },
+    "c0003": {
+      "line_start": 36,
+      "line_end": 54
+    },
+    "c0004": {
+      "line_start": 55,
+      "line_end": 70
+    },
+    "c0005": {
+      "line_start": 71,
+      "line_end": 83
+    },
+    "c0006": {
+      "line_start": 84,
+      "line_end": 97
+    },
+    "c0007": {
+      "line_start": 98,
+      "line_end": 117
+    },
+    "c0008": {
+      "line_start": 118,
+      "line_end": 126
+    },
+    "c0009": {
+      "line_start": 127,
+      "line_end": 143
+    },
+    "c0010": {
+      "line_start": 144,
+      "line_end": 162
+    },
+    "c0011": {
+      "line_start": 163,
+      "line_end": 182
+    },
+    "c0012": {
+      "line_start": 183,
+      "line_end": 202
+    },
+    "c0013": {
+      "line_start": 203,
+      "line_end": 222
+    },
+    "c0014": {
+      "line_start": 223,
+      "line_end": 242
+    },
+    "c0015": {
+      "line_start": 243,
+      "line_end": 260
+    },
+    "c0016": {
+      "line_start": 261,
+      "line_end": 269
+    },
+    "c0017": {
+      "line_start": 270,
+      "line_end": 277
+    }
+  },
+  "derived_from": {
+    "lines_path": "outputs/step1_lines.json",
+    "chunks_path": "outputs/step1_chunks.json"
+  }
+}

@@ -3,14 +3,33 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Union
 
 from .contracts import Chunk, LineRecord
 
 
-def write_json(path: Path, obj: Any) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(obj, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+# Backward-compatible: still works when callers pass Path.
+# Also allows passing a str without breaking anything.
+PathLike = Union[str, Path]
+
+
+def read_json(path: PathLike) -> Any:
+    """
+    Deterministic JSON reader (fail-closed).
+    """
+    p = Path(path)
+    if not p.exists():
+        raise FileNotFoundError(f"JSON file not found: {p}")
+    try:
+        return json.loads(p.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as e:
+        raise ValueError(f"Invalid JSON in {p}: {e}") from e
+
+
+def write_json(path: PathLike, obj: Any) -> None:
+    p = Path(path)
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(json.dumps(obj, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
 def records_to_dicts(records: List[LineRecord]) -> List[Dict[str, Any]]:

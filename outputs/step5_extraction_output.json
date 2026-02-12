@@ -1,0 +1,373 @@
+{
+  "guideline_id": "inesss_hypertension",
+  "model_id": "microsoft/Phi-3-mini-4k-instruct",
+  "chunking": {
+    "hard_limit_lines": 20,
+    "soft_limit_chars": 1200,
+    "num_chunks": 17
+  },
+  "extracted_facts": [
+    {
+      "fact_id": "f0001",
+      "fact_type": "population",
+      "statement": "Personne de 18 ans ou plus atteinte d’hypertension artérielle",
+      "strength": "must",
+      "requires_human_review": false,
+      "subject": null,
+      "condition": null,
+      "action": null,
+      "notes": null,
+      "citations": [
+        {
+          "chunk_id": "c0001",
+          "line_start": 6,
+          "line_end": 15,
+          "quote": null
+        }
+      ],
+      "raw": null
+    },
+    {
+      "fact_id": "f0002",
+      "fact_type": "exclusion",
+      "statement": "Grossesse ou allaitement",
+      "strength": "must",
+      "requires_human_review": false,
+      "subject": null,
+      "condition": null,
+      "action": null,
+      "notes": null,
+      "citations": [
+        {
+          "chunk_id": "c0001",
+          "line_start": 9,
+          "line_end": 15,
+          "quote": null
+        }
+      ],
+      "raw": null
+    },
+    {
+      "fact_id": "f0003",
+      "fact_type": "other",
+      "statement": "Atteindre les valeurs cibles chez les personnes atteintes d’hypertension artérielle afin de prévenir les complications cardiovasculaires et cérébrovasculaires.",
+      "strength": "must",
+      "requires_human_review": false,
+      "subject": null,
+      "condition": null,
+      "action": null,
+      "notes": null,
+      "citations": [
+        {
+          "chunk_id": "c0002",
+          "line_start": 16,
+          "line_end": 35,
+          "quote": null
+        }
+      ],
+      "raw": null
+    },
+    {
+      "fact_id": "f0004",
+      "fact_type": "population",
+      "statement": "Contre-indications Antécédent de réaction allergique ou intolérance connue aux diurétiques thiazidiques ou apparentés",
+      "strength": "must",
+      "requires_human_review": false,
+      "subject": null,
+      "condition": null,
+      "action": null,
+      "notes": null,
+      "citations": [
+        {
+          "chunk_id": "c0003",
+          "line_start": 49,
+          "line_end": 50,
+          "quote": null
+        }
+      ],
+      "raw": null
+    },
+    {
+      "fact_id": "f0005",
+      "fact_type": "other",
+      "statement": "Effets indésirables Déshydratation médicamenteux les plus Dysfonction sexuelle (homme et femme) fréquents",
+      "strength": "unclear",
+      "requires_human_review": false,
+      "subject": null,
+      "condition": null,
+      "action": null,
+      "notes": null,
+      "citations": [
+        {
+          "chunk_id": "c0004",
+          "line_start": 55,
+          "line_end": 70,
+          "quote": null
+        }
+      ],
+      "raw": null
+    },
+    {
+      "fact_id": "f0006",
+      "fact_type": "other",
+      "statement": "L’intervalle d’ajustement minimal indiqué représente le temps requis généralement pour obtenir l’effet maximal.",
+      "strength": "must",
+      "requires_human_review": false,
+      "subject": null,
+      "condition": null,
+      "action": null,
+      "notes": null,
+      "citations": [
+        {
+          "chunk_id": "c0005",
+          "line_start": 71,
+          "line_end": 83,
+          "quote": null
+        }
+      ],
+      "raw": null
+    },
+    {
+      "fact_id": "f0007",
+      "fact_type": "other",
+      "statement": "La réévaluation de la posologie ou une interruption du traitement peuvent être nécessaires si l’instauration de l’IECA induit une augmentation de la créatinine de base de plus de 30 % ou en présence d’insuffisance rénale grave.",
+      "strength": "must",
+      "requires_human_review": false,
+      "subject": null,
+      "condition": null,
+      "action": null,
+      "notes": null,
+      "citations": [
+        {
+          "chunk_id": "c0006",
+          "line_start": 84,
+          "line_end": 97,
+          "quote": null
+        }
+      ],
+      "raw": null
+    },
+    {
+      "fact_id": "f0008",
+      "fact_type": "other",
+      "statement": "L’intervalle d’ajustement minimal indiqué représente le temps requis généralement pour obtenir l’effet maximal.",
+      "strength": "unclear",
+      "requires_human_review": false,
+      "subject": null,
+      "condition": null,
+      "action": null,
+      "notes": null,
+      "citations": [
+        {
+          "chunk_id": "c0007",
+          "line_start": 112,
+          "line_end": 113,
+          "quote": null
+        }
+      ],
+      "raw": null
+    },
+    {
+      "fact_id": "f0009",
+      "fact_type": "contraindication",
+      "statement": "Contre-indications Antécédent de réaction allergique, intolérance ou antécédent d’angiœdème lié à un traitement antérieur avec un ARA",
+      "strength": "must",
+      "requires_human_review": false,
+      "subject": null,
+      "condition": null,
+      "action": null,
+      "notes": null,
+      "citations": [
+        {
+          "chunk_id": "c0008",
+          "line_start": 118,
+          "line_end": 126,
+          "quote": null
+        }
+      ],
+      "raw": null
+    },
+    {
+      "fact_id": "f0010",
+      "fact_type": "other",
+      "statement": "Prudence chez les personnes à risque d’hypotension ou d’étourdissements lors de l’administration concomitante d’un ARA et d’un inhibiteur du SGLT2",
+      "strength": "must",
+      "requires_human_review": false,
+      "subject": null,
+      "condition": null,
+      "action": null,
+      "notes": null,
+      "citations": [
+        {
+          "chunk_id": "c0009",
+          "line_start": 127,
+          "line_end": 143,
+          "quote": null
+        }
+      ],
+      "raw": null
+    },
+    {
+      "fact_id": "f0011",
+      "fact_type": "other",
+      "statement": "L’intervalle d’ajustement minimal indiqué représente le temps requis généralement pour obtenir l’effet maximal.",
+      "strength": "unclear",
+      "requires_human_review": false,
+      "subject": null,
+      "condition": null,
+      "action": null,
+      "notes": null,
+      "citations": [
+        {
+          "chunk_id": "c0010",
+          "line_start": 152,
+          "line_end": 153,
+          "quote": null
+        }
+      ],
+      "raw": null
+    },
+    {
+      "fact_id": "f0012",
+      "fact_type": "other",
+      "statement": "Asthme et maladie pulmonaire obstructive chronique (MPOC) (privilégier un β-bloquant cardiosélectif)",
+      "strength": "must",
+      "requires_human_review": false,
+      "subject": null,
+      "condition": null,
+      "action": null,
+      "notes": null,
+      "citations": [
+        {
+          "chunk_id": "c0011",
+          "line_start": 163,
+          "line_end": 182,
+          "quote": null
+        }
+      ],
+      "raw": null
+    },
+    {
+      "fact_id": "f0013",
+      "fact_type": "other",
+      "statement": "Antiarythmiques : prolongation de la conduction sino-auriculaire (SA) et AV",
+      "strength": "must",
+      "requires_human_review": false,
+      "subject": null,
+      "condition": null,
+      "action": null,
+      "notes": null,
+      "citations": [
+        {
+          "chunk_id": "c0012",
+          "line_start": 183,
+          "line_end": 184,
+          "quote": null
+        }
+      ],
+      "raw": null
+    },
+    {
+      "fact_id": "f0014",
+      "fact_type": "other",
+      "statement": "Pindolol 5 → 7,5 → 10 mg PO BID",
+      "strength": "must",
+      "requires_human_review": false,
+      "subject": null,
+      "condition": null,
+      "action": null,
+      "notes": null,
+      "citations": [
+        {
+          "chunk_id": "c0013",
+          "line_start": 203,
+          "line_end": 204,
+          "quote": null
+        }
+      ],
+      "raw": null
+    },
+    {
+      "fact_id": "f0015",
+      "fact_type": "other",
+      "statement": "Le jus de pamplemousse peut augmenter significativement l’effet antihypertenseur.",
+      "strength": "must",
+      "requires_human_review": false,
+      "subject": null,
+      "condition": null,
+      "action": null,
+      "notes": null,
+      "citations": [
+        {
+          "chunk_id": "c0014",
+          "line_start": 223,
+          "line_end": 242,
+          "quote": null
+        }
+      ],
+      "raw": null
+    },
+    {
+      "fact_id": "f0016",
+      "fact_type": "other",
+      "statement": "Médicaments Modalités d’ajustement posologique†",
+      "strength": "unclear",
+      "requires_human_review": false,
+      "subject": null,
+      "condition": null,
+      "action": null,
+      "notes": null,
+      "citations": [
+        {
+          "chunk_id": "c0015",
+          "line_start": 243,
+          "line_end": 244,
+          "quote": null
+        }
+      ],
+      "raw": null
+    },
+    {
+      "fact_id": "f0017",
+      "fact_type": "population",
+      "statement": "Apparition ou aggravation de signes ou symptômes évoquant une atteinte des organes cibles",
+      "strength": "must",
+      "requires_human_review": false,
+      "subject": null,
+      "condition": null,
+      "action": null,
+      "notes": null,
+      "citations": [
+        {
+          "chunk_id": "c0016",
+          "line_start": 261,
+          "line_end": 262,
+          "quote": null
+        }
+      ],
+      "raw": null
+    },
+    {
+      "fact_id": "f0018",
+      "fact_type": "other",
+      "statement": "Une augmentation de plus de 20 % de la créatinine après l’introduction d’un antihypertenseur.",
+      "strength": "must",
+      "requires_human_review": false,
+      "subject": null,
+      "condition": null,
+      "action": null,
+      "notes": null,
+      "citations": [
+        {
+          "chunk_id": "c0017",
+          "line_start": 270,
+          "line_end": 277,
+          "quote": null
+        }
+      ],
+      "raw": null
+    }
+  ],
+  "warnings": [],
+  "meta": {}
+}

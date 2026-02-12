@@ -8,6 +8,7 @@ from schemas.schemas_extraction import ExtractionOutput
 from schemas.schemas_workflow import Workflow
 from pipeline.validate_citations import validate_citations
 from pipeline.validate_workflow import validate_workflow_graph
+from pipeline.io_utils import write_json
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -94,6 +95,8 @@ def main():
 
     # Validate graph integrity (ids, reachability, edges)
     validate_workflow_graph(workflow)
+
+    write_json("outputs/step2_validation_ok.json", {"ok": True})
 
     print("✅ Step 2 passed: schemas + citations + workflow graph validation")
 

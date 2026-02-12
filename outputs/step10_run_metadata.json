@@ -3,10 +3,14 @@
   "repo_root": "C:\\Users\\danie\\Documents\\Github\\mini_distillation_engine",
   "ran_steps": [
     "step1",
+    "step2",
+    "step3",
+    "step4",
     "step5",
     "step6",
     "step7",
-    "step8"
+    "step8",
+    "step9"
   ],
   "skipped_steps": [],
   "env": {
@@ -18,9 +22,9 @@
     "torch_cuda_version": "11.8"
   },
   "artifacts": {
-    "guideline_txt": "data\\guideline.txt",
-    "step7_workflow": "outputs\\step7_workflow.json",
-    "step8_audit_md": "outputs\\step8_workflow_audit.md",
+    "workflow_json": "outputs\\step7_workflow.json",
+    "audit_md": "outputs\\step8_workflow_audit.md",
+    "human_md": "outputs\\step9_clinical_summary.md",
     "hashes_json": "outputs\\step10_artifact_hashes.json"
   }
 }

@@ -1,0 +1,170 @@
+{
+  "workflow_id": "inesss_hypertension__v1",
+  "guideline_id": "inesss_hypertension",
+  "inputs": [
+    {
+      "input_id": "in001",
+      "name": "meets_population",
+      "type": "bool",
+      "description": "True if the patient matches the guideline population definition.",
+      "choices": null
+    },
+    {
+      "input_id": "in002",
+      "name": "has_exclusion_or_contraindication",
+      "type": "bool",
+      "description": "True if any guideline exclusion or contraindication applies.",
+      "choices": null
+    },
+    {
+      "input_id": "in003",
+      "name": "has_red_flags",
+      "type": "bool",
+      "description": "True if any guideline red flag is present.",
+      "choices": null
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "d0001",
+      "node_type": "decision",
+      "condition": "in001 == true",
+      "true_next": "d0002",
+      "false_next": "e0001",
+      "citations": [
+        {
+          "chunk_id": "c0001",
+          "line_start": 6,
+          "line_end": 15,
+          "quote": null
+        }
+      ]
+    },
+    {
+      "node_id": "d0002",
+      "node_type": "decision",
+      "condition": "in002 == true",
+      "true_next": "e0002",
+      "false_next": "d0003",
+      "citations": [
+        {
+          "chunk_id": "c0001",
+          "line_start": 9,
+          "line_end": 15,
+          "quote": null
+        },
+        {
+          "chunk_id": "c0003",
+          "line_start": 49,
+          "line_end": 50,
+          "quote": null
+        },
+        {
+          "chunk_id": "c0008",
+          "line_start": 118,
+          "line_end": 126,
+          "quote": null
+        }
+      ]
+    },
+    {
+      "node_id": "d0003",
+      "node_type": "decision",
+      "condition": "in003 == true",
+      "true_next": "a0001",
+      "false_next": "a0002",
+      "citations": []
+    },
+    {
+      "node_id": "a0001",
+      "node_type": "action",
+      "action": "Guideline red flags present: escalate to urgent evaluation / clinician-directed management per guideline context.",
+      "requires_human_review": true,
+      "citations": []
+    },
+    {
+      "node_id": "a0002",
+      "node_type": "action",
+      "action": "No exclusions/contraindications and no red flags detected. Review the extracted guideline facts and apply clinically. This workflow is a structured summary, not autonomous medical decision-making.",
+      "requires_human_review": true,
+      "citations": [
+        {
+          "chunk_id": "c0001",
+          "line_start": 6,
+          "line_end": 15,
+          "quote": null
+        },
+        {
+          "chunk_id": "c0002",
+          "line_start": 16,
+          "line_end": 35,
+          "quote": null
+        },
+        {
+          "chunk_id": "c0004",
+          "line_start": 55,
+          "line_end": 70,
+          "quote": null
+        },
+        {
+          "chunk_id": "c0005",
+          "line_start": 71,
+          "line_end": 83,
+          "quote": null
+        },
+        {
+          "chunk_id": "c0006",
+          "line_start": 84,
+          "line_end": 97,
+          "quote": null
+        },
+        {
+          "chunk_id": "c0007",
+          "line_start": 112,
+          "line_end": 113,
+          "quote": null
+        },
+        {
+          "chunk_id": "c0009",
+          "line_start": 127,
+          "line_end": 143,
+          "quote": null
+        },
+        {
+          "chunk_id": "c0010",
+          "line_start": 152,
+          "line_end": 153,
+          "quote": null
+        }
+      ]
+    },
+    {
+      "node_id": "e0001",
+      "node_type": "end",
+      "label": "Not applicable (outside population)"
+    },
+    {
+      "node_id": "e0002",
+      "node_type": "end",
+      "label": "Excluded / contraindicated"
+    }
+  ],
+  "start_node_id": "d0001",
+  "requires_human_review": true,
+  "warnings": [
+    "Step7: no RED_FLAG facts found; the red-flag decision node is a template gate with no fact-derived criteria in this run."
+  ],
+  "meta": {
+    "source": {
+      "step": 7,
+      "input_artifact": "outputs/step6_extraction_output_clean.json",
+      "num_facts": 14,
+      "num_population_facts": 1,
+      "num_excl_contra_facts": 3,
+      "num_red_flag_facts": 0,
+      "num_review_facts": 11,
+      "review_citations_available": 13,
+      "review_citations_emitted": 8
+    }
+  }
+}

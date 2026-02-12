@@ -3,6 +3,7 @@ annotated-types==0.7.0
 anyio==4.12.1
 asttokens @ file:///home/conda/feedstock_root/build_artifacts/asttokens_1763409923949/work
 attrs==25.4.0
+beautifulsoup4==4.14.3
 black==26.1.0
 Bottleneck @ file:///C:/miniconda3/conda-bld/bottleneck_1761938096667/work
 brotlicffi @ file:///C:/miniconda3/conda-bld/brotlicffi_1764961372591/work
@@ -12,6 +13,7 @@ charset-normalizer @ file:///C:/miniconda3/conda-bld/charset-normalizer_17617449
 click==8.3.1
 colorama @ file:///home/conda/feedstock_root/build_artifacts/colorama_1733218098505/work
 comm @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_comm_1753453984/work
+cryptography==46.0.5
 debugpy @ file:///D:/bld/bld/rattler-build_debugpy_1769745019/work
 decorator @ file:///home/conda/feedstock_root/build_artifacts/decorator_1740384970518/work
 exceptiongroup @ file:///home/conda/feedstock_root/build_artifacts/exceptiongroup_1763918002538/work
@@ -34,6 +36,7 @@ jsonschema-specifications==2025.9.1
 jupyter_client @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_jupyter_client_1767954655/work
 jupyter_core @ file:///D:/bld/bld/rattler-build_jupyter_core_1760643889/work
 librt==0.7.8
+lxml==6.0.2
 Markdown==3.10.1
 markdown-it-py==4.0.0
 MarkupSafe @ file:///C:/b/abs_a0ma7ge0jc/croot/markupsafe_1738584052792/work
@@ -53,6 +56,8 @@ packaging @ file:///C:/miniconda3/conda-bld/packaging_1761049101700/work
 pandas @ file:///C:/miniconda3/conda-bld/pandas_1762332399653/work/dist/pandas-2.3.3-cp310-cp310-win_amd64.whl#sha256=25368e0adc93a7db0f3983502b4e57344f71af8f45ca3849f7c3833738f306aa
 parso @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_parso_1755974222/work
 pathspec==1.0.4
+pdfminer.six==20251230
+pdfplumber==0.11.9
 pickleshare @ file:///home/conda/feedstock_root/build_artifacts/pickleshare_1733327343728/work
 pillow @ file:///C:/b/abs_b50vowcrzo/croot/pillow_1738010273782/work
 platformdirs @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_platformdirs_1764950726/work
@@ -63,6 +68,8 @@ pycparser @ file:///C:/miniconda3/conda-bld/pycparser_1757496059965/work
 pydantic==2.12.5
 pydantic_core==2.41.5
 Pygments @ file:///home/conda/feedstock_root/build_artifacts/pygments_1750615794071/work
+pypdf==6.7.0
+pypdfium2==5.4.0
 PySocks @ file:///C:/miniconda3/conda-bld/pysocks_1761753030270/work
 python-dateutil @ file:///C:/b/abs_3au_koqnbs/croot/python-dateutil_1716495777160/work
 pytokens==0.4.1
@@ -81,6 +88,7 @@ scipy @ file:///C:/b/abs_71q96u23a4/croot/scipy_1747238057723/work/dist/scipy-1.
 sentencepiece==0.2.1
 shellingham==1.5.4
 six @ file:///C:/b/abs_149wuyuo1o/croot/six_1744271521515/work
+soupsieve==2.8.3
 stack_data @ file:///home/conda/feedstock_root/build_artifacts/stack_data_1733569443808/work
 sympy==1.13.1
 tabulate==0.9.0

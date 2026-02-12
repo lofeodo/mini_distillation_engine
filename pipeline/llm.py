@@ -24,7 +24,7 @@ class GenerationConfig:
 class LocalLLM:
     """
     Minimal local inference wrapper for instruction-tuned causal LMs.
-    CPU-only by design (Step 4).
+    Runs on CUDA if available, otherwise CPU. Fully local/offline.
     """
 
     def __init__(

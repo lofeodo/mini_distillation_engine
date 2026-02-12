@@ -39,8 +39,9 @@ class LocalLLM:
 
         # Determinism knobs (CPU)
         torch.manual_seed(seed)
-        # If you ever use MKL/OpenMP parallelism, determinism can vary, but this is good enough for a demo.
-        # torch.use_deterministic_algorithms(True)  # optional; can slow / error for some ops
+
+        # Choose device
+        self.device = "cuda" if torch.cuda.is_available() else "cpu"
 
         self.tokenizer = AutoTokenizer.from_pretrained(
             model_name_or_path,
@@ -48,17 +49,22 @@ class LocalLLM:
             use_fast=True,
         )
 
+        dtype = torch.float16 if self.device == "cuda" else torch.float32
+
         self.model = AutoModelForCausalLM.from_pretrained(
             model_name_or_path,
             cache_dir=cache_dir,
-            torch_dtype=torch.float32,
-            device_map=None,          # keep explicit
+            dtype=dtype,                 # replaces deprecated torch_dtype
+            device_map="auto" if self.device == "cuda" else None,
         )
         self.model.eval()
 
-        # Some models (e.g., Phi-3) may not define pad_token; set it safely.
+        # Some models don't define pad_token; set safely
         if self.tokenizer.pad_token_id is None and self.tokenizer.eos_token_id is not None:
             self.tokenizer.pad_token = self.tokenizer.eos_token
+        
+        print(f"[LocalLLM] device={self.device} dtype={dtype} model_device={self.model.device}")
+
 
     def generate_text(
         self,
@@ -72,6 +78,8 @@ class LocalLLM:
         torch.manual_seed(self.seed)
 
         inputs = self.tokenizer(prompt, return_tensors="pt")
+        inputs = {k: v.to(self.model.device) for k, v in inputs.items()}
+
         input_ids = inputs["input_ids"]
         attention_mask = inputs.get("attention_mask", None)
 

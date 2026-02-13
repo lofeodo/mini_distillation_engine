@@ -7,12 +7,12 @@
 Answer each question in order. The question text is pulled directly from the guideline whenever possible. Citations show exactly where it came from.
 
 ## 1. Eligibility
-**Guideline text:** ► Personne de 18 ans ou plus atteinte d’hypertension artérielle CONTRE-INDICATIONS À L’APPLICATION DE CE PROTOCOLE ► Grossesse ou allaitement ► Pression artérielle systolique supérieure ou égale à 180 mm Hg OU pression artérielle diastolique supérieure ou égale à 110 mm Hg DIRECTIVES 1. PRÉCAUTIONS
+**Guideline text:** ► Personne de 18 ans ou plus atteinte d’hypertension artérielle
 
 - ✅ If **YES** → Continue to next step.
 - ❌ If **NO**  → Not applicable (outside population)
 
-**Evidence:** `c0001:6-15`
+**Evidence:** `c0001:6-6`
 
 ## 2. Exclusions / Contraindications
 **Guideline text:** ► Pression artérielle systolique supérieure ou égale à 180 mm Hg OU pression artérielle diastolique supérieure ou égale à 110 mm Hg DIRECTIVES 1. PRÉCAUTIONS Consulter le guide Prise en charge systématisée des personnes atteintes d’hypertension artérielle, élaboré par la Société québécoise d’hypertension artérielle (S…
@@ -20,7 +20,7 @@ Answer each question in order. The question text is pulled directly from the gui
 - ✅ If **YES** → Excluded / contraindicated
 - ❌ If **NO**  → Continue to next step.
 
-**Evidence:** `c0001:9-15`, `c0003:49-50`, `c0008:118-126`
+**Evidence:** `c0001:9-15`, `c0003:49-49`, `c0008:118-118`
 
 ## 3. Red Flags / Escalation
 **Guideline text:** True if any guideline red flag is present.
@@ -48,7 +48,7 @@ Answer each question in order. The question text is pulled directly from the gui
 ## Actions (engine)
 - `a0001`: Guideline red flags present: escalate to urgent evaluation / clinician-directed management per guideline context.
 - `a0002`: No exclusions/contraindications and no red flags detected. Review the extracted guideline facts and apply clinically. This workflow is a structured summary, not autonomous medical decision-making.
-  - Evidence: `c0001:6-15`, `c0002:16-35`, `c0004:55-70`, `c0005:71-83`, `c0006:84-97`, `c0007:112-113`, `c0009:127-143`, `c0010:152-153`
+  - Evidence: `c0001:6-6`, `c0002:16-16`, `c0004:55-55`, `c0005:71-71`, `c0006:84-84`, `c0007:112-112`, `c0009:127-127`, `c0010:152-152`
 
 ## End states (engine)
 - `e0001`: Not applicable (outside population)

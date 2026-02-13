@@ -46,6 +46,7 @@ class NormalizeConfig:
     min_chars: int = 10
     fuzzy_threshold: float = 0.94
     max_fuzzy_comp_per_type: int = 8000  # safety cap
+    citation_tighten_max_window: int = 4  # max lines to join when matching statements
 
 
 def normalize_text(s: str) -> str:
@@ -88,13 +89,10 @@ def looks_like_header_or_junk(stmt: str, cfg: NormalizeConfig) -> bool:
     if not toks:
         return True
 
-    # very common header-like lines in your sample:
-    # "Médicaments Modalités d’ajustement posologique†"
     header_hits = sum(1 for x in toks if x in _HEADER_TOKENS)
     if header_hits >= 2 and len(toks) <= 10:
         return True
 
-    # starts with "table/figure"
     if toks[0] in {"table", "figure", "annexe"}:
         return True
 
@@ -104,42 +102,33 @@ def looks_like_header_or_junk(stmt: str, cfg: NormalizeConfig) -> bool:
 def refine_fact_type(stmt: str, current: FactType) -> FactType:
     s = stmt.lower()
 
-    # Contraindication / exclusion (FR+EN)
     if any(k in s for k in ["contre-indication", "contre indication", "contraindication", "do not", "ne pas", "éviter", "eviter"]):
         return FactType.CONTRAINDICATION
 
     if any(k in s for k in ["exclusion", "grossesse", "allaitement", "pregnancy", "breastfeeding"]):
         return FactType.EXCLUSION
 
-    # Red flags
     if any(k in s for k in ["urgence", "urgent", "immédiat", "immediat", "emergency", "immediately", "référer", "refer"]):
         return FactType.RED_FLAG
 
-    # Threshold
     if re.search(r"\b(\d{2,3})\s*(mmhg|mg|g|ml)\b", s) or any(k in s for k in ["≥", ">=", "<=", ">", "<"]):
-        # cautious: only promote to threshold if current is OTHER/UNCLEAR-ish
         if current in {FactType.OTHER, FactType.FOLLOW_UP, FactType.DIAGNOSTIC}:
             return FactType.THRESHOLD
 
-    # Follow-up / monitoring
     if any(k in s for k in ["suivi", "réévaluation", "reevaluation", "monitor", "reassess", "follow-up", "follow up", "répéter", "repeter", "mesurer", "measure"]):
         if current == FactType.OTHER:
             return FactType.FOLLOW_UP
 
-    # Actions
     if any(k in s for k in ["prescrire", "initier", "commencer", "start", "initiate", "titrer", "titrate", "administrer", "administer"]):
         if current == FactType.OTHER:
             return FactType.ACTION
 
-    # Population: only keep/populate if it actually looks like a population definition
     if current == FactType.POPULATION:
         if any(k in s for k in ["contre-indication", "contre indication", "contraindication"]):
             return FactType.CONTRAINDICATION
 
-    # "Population" misfires – trigger phrases are not population definitions.
     if current == FactType.POPULATION:
         if any(k in s for k in ["apparition", "aggravation", "signes", "symptômes", "symptomes", "atteinte des organes cibles"]):
-            # Conservative: treat as follow-up/trigger condition rather than red_flag
             return FactType.FOLLOW_UP
 
     return current
@@ -148,24 +137,18 @@ def refine_fact_type(stmt: str, current: FactType) -> FactType:
 def refine_strength(stmt: str, current: Strength, fact_type: FactType) -> Strength:
     s = stmt.lower()
 
-    # Explicit strong language -> MUST
     if any(k in s for k in ["do not", "ne pas", "jamais", "never", "contre-indication", "contraindication", "doit", "must", "required"]):
         return Strength.MUST
 
-    # Recommendation language -> SHOULD
     if any(k in s for k in ["devrait", "should", "recommand", "recommended", "recommandé", "recommandee"]):
         return Strength.SHOULD
 
-    # Ambiguous / optional language -> CONSIDER / MAY
     if any(k in s for k in ["considérer", "consider", "peut être envisagé", "peut etre envisage", "may", "peut"]):
         return Strength.CONSIDER if ("consid" in s or "envisag" in s) else Strength.MAY
 
-    # NEW: If it's an exclusion/contraindication and there's no hedging, default to MUST.
-    # This fixes cases like "Grossesse ou allaitement" becoming "unclear".
     if fact_type in {FactType.EXCLUSION, FactType.CONTRAINDICATION}:
         return Strength.MUST
 
-    # If it’s descriptive and current is MUST, downgrade to UNCLEAR
     if current == Strength.MUST and not any(k in s for k in ["doit", "must", "ne pas", "do not", "recommand", "should", "devrait"]):
         return Strength.UNCLEAR
 
@@ -173,7 +156,6 @@ def refine_strength(stmt: str, current: Strength, fact_type: FactType) -> Streng
 
 
 def compute_requires_human_review(strength: Strength, current: bool) -> bool:
-    # Your schema says: "If language is ambiguous (“consider”, “may”), this must be true."
     if strength in {Strength.MAY, Strength.CONSIDER, Strength.UNCLEAR}:
         return True
     return current
@@ -184,14 +166,12 @@ def citation_key(c: Citation) -> Tuple[str, int, int]:
 
 
 def merge_citations(cits: List[Citation]) -> List[Citation]:
-    # Union by (chunk_id, start, end), keep a quote if any
     best: Dict[Tuple[str, int, int], Citation] = {}
     for c in cits:
         k = citation_key(c)
         if k not in best:
             best[k] = c
         else:
-            # if existing has no quote but new has quote, keep quote version
             if best[k].quote is None and c.quote is not None:
                 best[k] = c
 
@@ -201,12 +181,10 @@ def merge_citations(cits: List[Citation]) -> List[Citation]:
 
 
 def choose_rep(facts: List[ExtractedFact]) -> ExtractedFact:
-    # deterministic representative: longest statement, then smallest fact_id
     return sorted(facts, key=lambda f: (-len(f.statement), f.fact_id))[0]
 
 
 def merge_optional_fields(facts: List[ExtractedFact], rep: ExtractedFact) -> Dict[str, Any]:
-    # keep rep as baseline, but fill None fields from others deterministically
     subject = rep.subject
     condition = rep.condition
     action = rep.action
@@ -238,9 +216,57 @@ def fuzzy_ratio(a: str, b: str) -> float:
     return SequenceMatcher(None, a, b).ratio()
 
 
+def _tighten_citation_span(
+    statement: str,
+    citation: Citation,
+    line_text_by_no: Dict[int, str],
+    *,
+    max_window: int,
+) -> Citation:
+    """
+    Deterministically shrink a citation's [line_start, line_end] within its current span
+    to the smallest sub-span that contains the statement text.
+    """
+    stmt_norm = normalize_text(statement).lower()
+
+    ls, le = citation.line_start, citation.line_end
+    if le < ls:
+        ls, le = le, ls
+
+    # collect normalized lines present in span
+    span: List[Tuple[int, str]] = []
+    for n in range(ls, le + 1):
+        txt = line_text_by_no.get(n)
+        if txt is None:
+            continue
+        span.append((n, normalize_text(txt).lower()))
+
+    if not span or not stmt_norm:
+        return citation
+
+    # 1) single-line containment
+    for n, txt in span:
+        if stmt_norm in txt:
+            return Citation(chunk_id=citation.chunk_id, line_start=n, line_end=n, quote=citation.quote)
+
+    # 2) sliding window (2..max_window lines)
+    # (helps if statement was split across lines)
+    max_window = max(2, int(max_window))
+    for w in range(2, max_window + 1):
+        for i in range(0, len(span) - w + 1):
+            n0 = span[i][0]
+            n1 = span[i + w - 1][0]
+            joined = " ".join(x[1] for x in span[i:i + w])
+            if stmt_norm in joined:
+                return Citation(chunk_id=citation.chunk_id, line_start=n0, line_end=n1, quote=citation.quote)
+
+    return citation
+
+
 def normalize_and_canonicalize(
     extraction: ExtractionOutput,
     cfg: NormalizeConfig = NormalizeConfig(),
+    line_text_by_no: Optional[Dict[int, str]] = None,
 ) -> Tuple[ExtractionOutput, List[str]]:
     warnings: List[str] = []
 
@@ -295,7 +321,10 @@ def normalize_and_canonicalize(
             fact_id=rep.fact_id,
             fact_type=ft,
             statement=rep.statement,
-            strength=max((x.strength for x in facts), key=lambda s: [Strength.UNCLEAR, Strength.MAY, Strength.CONSIDER, Strength.SHOULD, Strength.MUST].index(s)),
+            strength=max(
+                (x.strength for x in facts),
+                key=lambda s: [Strength.UNCLEAR, Strength.MAY, Strength.CONSIDER, Strength.SHOULD, Strength.MUST].index(s),
+            ),
             requires_human_review=any(x.requires_human_review for x in facts),
             citations=merge_citations([c for x in facts for c in x.citations]),
             **merge_optional_fields(facts, rep),
@@ -347,7 +376,10 @@ def normalize_and_canonicalize(
                     fact_id=rep.fact_id,
                     fact_type=ft,
                     statement=rep.statement,
-                    strength=max((x.strength for x in group), key=lambda s: [Strength.UNCLEAR, Strength.MAY, Strength.CONSIDER, Strength.SHOULD, Strength.MUST].index(s)),
+                    strength=max(
+                        (x.strength for x in group),
+                        key=lambda s: [Strength.UNCLEAR, Strength.MAY, Strength.CONSIDER, Strength.SHOULD, Strength.MUST].index(s),
+                    ),
                     requires_human_review=any(x.requires_human_review for x in group),
                     citations=merge_citations([c for x in group for c in x.citations]),
                     **merge_optional_fields(group, rep),
@@ -356,6 +388,43 @@ def normalize_and_canonicalize(
 
     if fuzzy_merges:
         warnings.append(f"Step6: merged {fuzzy_merges} near-duplicates by fuzzy matching.")
+
+    # 3.5) tighten citations deterministically using line text (if provided)
+    if line_text_by_no is not None:
+        tightened: List[ExtractedFact] = []
+        changed = 0
+        for f in merged_fuzzy:
+            new_cits = []
+            for c in f.citations:
+                tightened_c = _tighten_citation_span(
+                    f.statement,
+                    c,
+                    line_text_by_no,
+                    max_window=cfg.citation_tighten_max_window,
+                )
+                if (tightened_c.line_start, tightened_c.line_end) != (c.line_start, c.line_end):
+                    changed += 1
+                new_cits.append(tightened_c)
+
+            tightened.append(
+                ExtractedFact(
+                    fact_id=f.fact_id,
+                    fact_type=f.fact_type,
+                    statement=f.statement,
+                    strength=f.strength,
+                    requires_human_review=f.requires_human_review,
+                    subject=f.subject,
+                    condition=f.condition,
+                    action=f.action,
+                    notes=f.notes,
+                    citations=new_cits,
+                    raw=f.raw,
+                )
+            )
+
+        merged_fuzzy = tightened
+        if changed:
+            warnings.append(f"Step6: tightened {changed} citation spans using exact statement matching.")
 
     # 4) deterministic re-id
     merged_fuzzy.sort(key=lambda f: (f.fact_type.value, f.statement.lower(), f.fact_id))

@@ -9,6 +9,7 @@ from pipeline.validate_citations import validate_citations
 
 IN_PATH = "outputs/step5_extraction_output.json"
 CHUNKS_PATH = "outputs/step1_chunks.json"
+LINES_PATH = "outputs/step1_lines.json"
 OUT_PATH = "outputs/step6_extraction_output_clean.json"
 
 
@@ -20,20 +21,27 @@ def main():
     if not isinstance(chunks, list) or not chunks:
         raise ValueError("outputs/step1_chunks.json must be a non-empty list")
 
+    lines = read_json(LINES_PATH)
+    if not isinstance(lines, list) or not lines:
+        raise ValueError("outputs/step1_lines.json must be a non-empty list")
+
+    line_text_by_no = {int(x["line_no"]): x["text"] for x in lines}
+
     cleaned, step6_warnings = normalize_and_canonicalize(
         extraction,
         cfg=NormalizeConfig(
             min_chars=10,
             fuzzy_threshold=0.94,
             max_fuzzy_comp_per_type=8000,
+            citation_tighten_max_window=4,
         ),
+        line_text_by_no=line_text_by_no,
     )
 
     # Flatten citations into list[dict] for validate_citations(chunks, citations)
     flat_citations = []
     for f in cleaned.extracted_facts:
         for c in f.citations:
-            # validate_citations only needs chunk_id/line_start/line_end
             flat_citations.append(
                 {"chunk_id": c.chunk_id, "line_start": c.line_start, "line_end": c.line_end}
             )

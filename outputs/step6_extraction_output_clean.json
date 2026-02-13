@@ -21,7 +21,7 @@
         {
           "chunk_id": "c0008",
           "line_start": 118,
-          "line_end": 126,
+          "line_end": 118,
           "quote": null
         }
       ],
@@ -41,7 +41,7 @@
         {
           "chunk_id": "c0003",
           "line_start": 49,
-          "line_end": 50,
+          "line_end": 49,
           "quote": null
         }
       ],
@@ -81,7 +81,7 @@
         {
           "chunk_id": "c0016",
           "line_start": 261,
-          "line_end": 262,
+          "line_end": 261,
           "quote": null
         }
       ],
@@ -101,7 +101,7 @@
         {
           "chunk_id": "c0006",
           "line_start": 84,
-          "line_end": 97,
+          "line_end": 84,
           "quote": null
         }
       ],
@@ -121,7 +121,7 @@
         {
           "chunk_id": "c0012",
           "line_start": 183,
-          "line_end": 184,
+          "line_end": 183,
           "quote": null
         }
       ],
@@ -141,7 +141,7 @@
         {
           "chunk_id": "c0011",
           "line_start": 163,
-          "line_end": 182,
+          "line_end": 163,
           "quote": null
         }
       ],
@@ -161,7 +161,7 @@
         {
           "chunk_id": "c0002",
           "line_start": 16,
-          "line_end": 35,
+          "line_end": 16,
           "quote": null
         }
       ],
@@ -181,7 +181,7 @@
         {
           "chunk_id": "c0004",
           "line_start": 55,
-          "line_end": 70,
+          "line_end": 55,
           "quote": null
         }
       ],
@@ -201,7 +201,7 @@
         {
           "chunk_id": "c0014",
           "line_start": 223,
-          "line_end": 242,
+          "line_end": 223,
           "quote": null
         }
       ],
@@ -221,19 +221,19 @@
         {
           "chunk_id": "c0005",
           "line_start": 71,
-          "line_end": 83,
+          "line_end": 71,
           "quote": null
         },
         {
           "chunk_id": "c0007",
           "line_start": 112,
-          "line_end": 113,
+          "line_end": 112,
           "quote": null
         },
         {
           "chunk_id": "c0010",
           "line_start": 152,
-          "line_end": 153,
+          "line_end": 152,
           "quote": null
         }
       ],
@@ -253,7 +253,7 @@
         {
           "chunk_id": "c0009",
           "line_start": 127,
-          "line_end": 143,
+          "line_end": 127,
           "quote": null
         }
       ],
@@ -273,7 +273,7 @@
         {
           "chunk_id": "c0017",
           "line_start": 270,
-          "line_end": 277,
+          "line_end": 270,
           "quote": null
         }
       ],
@@ -293,7 +293,7 @@
         {
           "chunk_id": "c0001",
           "line_start": 6,
-          "line_end": 15,
+          "line_end": 6,
           "quote": null
         }
       ],
@@ -302,7 +302,8 @@
   ],
   "warnings": [
     "Step6: dropped 2 header/junk facts deterministically.",
-    "Step6: merged 2 duplicates by canonical fingerprint."
+    "Step6: merged 2 duplicates by canonical fingerprint.",
+    "Step6: tightened 15 citation spans using exact statement matching."
   ],
   "meta": {
     "step6": {

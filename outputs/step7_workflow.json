@@ -35,7 +35,7 @@
         {
           "chunk_id": "c0001",
           "line_start": 6,
-          "line_end": 15,
+          "line_end": 6,
           "quote": null
         }
       ]
@@ -56,13 +56,13 @@
         {
           "chunk_id": "c0003",
           "line_start": 49,
-          "line_end": 50,
+          "line_end": 49,
           "quote": null
         },
         {
           "chunk_id": "c0008",
           "line_start": 118,
-          "line_end": 126,
+          "line_end": 118,
           "quote": null
         }
       ]
@@ -91,49 +91,49 @@
         {
           "chunk_id": "c0001",
           "line_start": 6,
-          "line_end": 15,
+          "line_end": 6,
           "quote": null
         },
         {
           "chunk_id": "c0002",
           "line_start": 16,
-          "line_end": 35,
+          "line_end": 16,
           "quote": null
         },
         {
           "chunk_id": "c0004",
           "line_start": 55,
-          "line_end": 70,
+          "line_end": 55,
           "quote": null
         },
         {
           "chunk_id": "c0005",
           "line_start": 71,
-          "line_end": 83,
+          "line_end": 71,
           "quote": null
         },
         {
           "chunk_id": "c0006",
           "line_start": 84,
-          "line_end": 97,
+          "line_end": 84,
           "quote": null
         },
         {
           "chunk_id": "c0007",
           "line_start": 112,
-          "line_end": 113,
+          "line_end": 112,
           "quote": null
         },
         {
           "chunk_id": "c0009",
           "line_start": 127,
-          "line_end": 143,
+          "line_end": 127,
           "quote": null
         },
         {
           "chunk_id": "c0010",
           "line_start": 152,
-          "line_end": 153,
+          "line_end": 152,
           "quote": null
         }
       ]

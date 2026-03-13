@@ -5,7 +5,7 @@ import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
-from pipelne.run_all import run_all_for_job
+from pipeline.run_all import run_all_for_job
 
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field

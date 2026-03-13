@@ -85,11 +85,18 @@ def create_job(req: CreateJobRequest):
 
     write_json(job_status_path(job_id), status)
 
-    run_all_for_job(
-        guideline_path=guideline_path,
-        output_dir=d,
-        model_id=req.model_id or settings.model_id,
-    )
+    try:
+        run_all_for_job(
+            guideline_path=guideline_path,
+            output_dir=d,
+            model_id=req.model_id or settings.model_id,
+        )
+    except Exception as e:
+        status["status"] = "failed"
+        status["completed_at"] = utc_now()
+        status["error_message"] = str(e)
+        write_json(job_status_path(job_id), status)
+        raise HTTPException(status_code=500, detail=f"job failed: {e}")
 
     status["status"] = "completed"
     status["completed_at"] = utc_now()

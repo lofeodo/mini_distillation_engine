@@ -6,8 +6,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 from pipeline.run_all import run_all_for_job
+from pipeline.source_to_guideline import build_guideline_txt_from_pdf
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, UploadFile, File, Form
 from pydantic import BaseModel, Field
 
 from config import get_settings
@@ -16,17 +17,6 @@ from config import get_settings
 settings = get_settings()
 
 app = FastAPI(title="Guideline Distillation Service")
-
-
-# ---------------------------
-# Request models
-# ---------------------------
-
-class CreateJobRequest(BaseModel):
-    guideline_text: str = Field(..., min_length=1)
-    guideline_id: str | None = None
-    model_id: str | None = None
-
 
 # ---------------------------
 # Utility functions
@@ -65,22 +55,38 @@ def health():
 
 
 @app.post("/jobs")
-def create_job(req: CreateJobRequest):
+async def create_job(
+    file: UploadFile = File(...),
+    model_id: str | None = Form(None),
+):
+    if not file.filename:
+        raise HTTPException(status_code=400, detail="missing filename")
+
+    if not file.filename.lower().endswith(".pdf"):
+        raise HTTPException(status_code=400, detail="only PDF files are supported")
 
     job_id = str(uuid.uuid4())
     d = job_dir(job_id)
 
+    # Save the uploaded PDF to a canonical internal name
+    pdf_path = d / "guideline.pdf"
+    pdf_bytes = await file.read()
+    pdf_path.write_bytes(pdf_bytes)
+
+    # Convert PDF -> canonical guideline.txt using existing pipeline utility
     guideline_path = d / "guideline.txt"
-    guideline_path.write_text(req.guideline_text, encoding="utf-8")
+    build_guideline_txt_from_pdf(pdf_path, guideline_path)
 
     status = {
         "job_id": job_id,
         "status": "running",
         "created_at": utc_now(),
         "completed_at": None,
-        "input_path": str(guideline_path),
+        "input_path": str(pdf_path),
+        "original_filename": file.filename,
+        "normalized_input_path": str(guideline_path),
         "local_output_dir": str(d),
-        "error_message": None
+        "error_message": None,
     }
 
     write_json(job_status_path(job_id), status)
@@ -89,7 +95,7 @@ def create_job(req: CreateJobRequest):
         run_all_for_job(
             guideline_path=guideline_path,
             output_dir=d,
-            model_id=req.model_id or settings.model_id,
+            model_id=model_id or settings.model_id,
         )
     except Exception as e:
         status["status"] = "failed"
@@ -100,13 +106,12 @@ def create_job(req: CreateJobRequest):
 
     status["status"] = "completed"
     status["completed_at"] = utc_now()
-
     write_json(job_status_path(job_id), status)
 
     return {
         "job_id": job_id,
         "status": status["status"],
-        "job_dir": str(d)
+        "job_dir": str(d),
     }
 
 

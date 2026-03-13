@@ -22,6 +22,9 @@ class Settings:
     # model configuration
     model_id: str = os.getenv("MODEL_ID", "microsoft/Phi-3-mini-4k-instruct")
 
+    # default guideline
+    guideline_id: str = "inesss_hypertension"
+
     # storage mode (local for now, later: gcs)
     storage_mode: str = os.getenv("STORAGE_MODE", "local")
 

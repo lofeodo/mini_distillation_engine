@@ -5,6 +5,7 @@ import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+from pipelne.run_all import run_all_for_job
 
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
@@ -84,7 +85,11 @@ def create_job(req: CreateJobRequest):
 
     write_json(job_status_path(job_id), status)
 
-    # NOTE: pipeline call will be added in the next step
+    run_all_for_job(
+        guideline_path=guideline_path,
+        output_dir=d,
+        model_id=req.model_id or settings.model_id,
+    )
 
     status["status"] = "completed"
     status["completed_at"] = utc_now()

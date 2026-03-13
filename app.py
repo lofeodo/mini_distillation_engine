@@ -5,18 +5,20 @@ import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
-from pipeline.run_all import run_all_for_job
-from pipeline.source_to_guideline import build_guideline_txt_from_pdf
 
 from fastapi import FastAPI, HTTPException, UploadFile, File, Form
-from pydantic import BaseModel, Field
 
 from config import get_settings
+from pipeline.run_all import run_all_for_job
+from pipeline.source_to_guideline import build_guideline_txt_from_pdf
+from pipeline.storage import get_storage_backend
 
 
 settings = get_settings()
+storage_backend = get_storage_backend(settings)
 
 app = FastAPI(title="Guideline Distillation Service")
+
 
 # ---------------------------
 # Utility functions
@@ -28,7 +30,7 @@ def utc_now() -> str:
 
 def write_json(path: Path, obj: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(obj, indent=2), encoding="utf-8")
+    path.write_text(json.dumps(obj, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
 def read_json(path: Path) -> dict[str, Any]:
@@ -50,7 +52,7 @@ def job_status_path(job_id: str) -> Path:
 # ---------------------------
 
 @app.get("/health")
-def health():
+def health() -> dict[str, str]:
     return {"status": "ok"}
 
 
@@ -58,7 +60,7 @@ def health():
 async def create_job(
     file: UploadFile = File(...),
     model_id: str | None = Form(None),
-):
+) -> dict[str, Any]:
     if not file.filename:
         raise HTTPException(status_code=400, detail="missing filename")
 
@@ -68,7 +70,7 @@ async def create_job(
     job_id = str(uuid.uuid4())
     d = job_dir(job_id)
 
-    # Save the uploaded PDF to a canonical internal name
+    # Save uploaded PDF to a canonical internal name
     pdf_path = d / "guideline.pdf"
     pdf_bytes = await file.read()
     pdf_path.write_bytes(pdf_bytes)
@@ -86,6 +88,8 @@ async def create_job(
         "original_filename": file.filename,
         "normalized_input_path": str(guideline_path),
         "local_output_dir": str(d),
+        "storage_mode": settings.storage_mode,
+        "artifact_uris": {},
         "error_message": None,
     }
 
@@ -97,6 +101,14 @@ async def create_job(
             output_dir=d,
             model_id=model_id or settings.model_id,
         )
+
+        artifact_uris = storage_backend.upload_job_directory(job_id, d)
+
+        status["status"] = "completed"
+        status["completed_at"] = utc_now()
+        status["artifact_uris"] = artifact_uris
+        write_json(job_status_path(job_id), status)
+
     except Exception as e:
         status["status"] = "failed"
         status["completed_at"] = utc_now()
@@ -104,42 +116,47 @@ async def create_job(
         write_json(job_status_path(job_id), status)
         raise HTTPException(status_code=500, detail=f"job failed: {e}")
 
-    status["status"] = "completed"
-    status["completed_at"] = utc_now()
-    write_json(job_status_path(job_id), status)
-
     return {
         "job_id": job_id,
         "status": status["status"],
         "job_dir": str(d),
+        "storage_mode": status["storage_mode"],
+        "artifacts": status["artifact_uris"],
     }
 
 
 @app.get("/jobs/{job_id}")
-def get_job(job_id: str):
-
+def get_job(job_id: str) -> dict[str, Any]:
     path = job_status_path(job_id)
 
     if not path.exists():
-        raise HTTPException(404, "job not found")
+        raise HTTPException(status_code=404, detail="job not found")
 
     return read_json(path)
 
 
 @app.get("/jobs/{job_id}/artifacts")
-def get_artifacts(job_id: str):
-
+def get_artifacts(job_id: str) -> dict[str, Any]:
     d = settings.local_jobs_dir / job_id
 
     if not d.exists():
-        raise HTTPException(404, "job not found")
+        raise HTTPException(status_code=404, detail="job not found")
 
-    artifacts = {}
+    status_path = job_status_path(job_id)
+    if status_path.exists():
+        status = read_json(status_path)
+        artifact_uris = status.get("artifact_uris") or {}
+        if artifact_uris:
+            return {
+                "job_id": job_id,
+                "storage_mode": settings.storage_mode,
+                "artifacts": artifact_uris,
+            }
 
-    for p in d.iterdir():
-        artifacts[p.name] = str(p)
+    artifacts = storage_backend.get_job_artifact_map(job_id, d)
 
     return {
         "job_id": job_id,
-        "artifacts": artifacts
+        "storage_mode": settings.storage_mode,
+        "artifacts": artifacts,
     }

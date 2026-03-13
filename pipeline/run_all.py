@@ -257,7 +257,7 @@ def run_all_for_job(
     resume: bool = False,
     write_hashes: bool = True,
 ) -> None:
-    repo_root = Path(__file__).resolve().parent
+    repo_root = Path(__file__).resolve().parents[1]
     output_dir.mkdir(parents=True, exist_ok=True)
 
     paths = resolve_paths_for_job(

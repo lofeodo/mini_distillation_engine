@@ -112,6 +112,33 @@ def resolve_paths(repo_root: Path) -> PipelinePaths:
     )
 
 
+def resolve_paths_for_job(
+    *,
+    repo_root: Path,
+    guideline_path: Path,
+    output_dir: Path,
+) -> PipelinePaths:
+    return PipelinePaths(
+        repo_root=repo_root,
+        data_dir=guideline_path.parent,
+        outputs_dir=output_dir,
+        guideline_txt=guideline_path,
+        step1_lines=output_dir / "step1_lines.json",
+        step1_chunks=output_dir / "step1_chunks.json",
+        step3_citation_index=output_dir / "step3_citation_index.json",
+        step3_citation_smoketest=output_dir / "step3_citation_smoketest.json",
+        step3_snippets_md=output_dir / "step3_citation_snippets.md",
+        step4_sanity=output_dir / "step4_sanity.json",
+        step5_extraction=output_dir / "step5_extraction_output.json",
+        step6_clean=output_dir / "step6_extraction_output_clean.json",
+        step7_workflow=output_dir / "step7_workflow.json",
+        step8_audit_md=output_dir / "step8_workflow_audit.md",
+        step9_human_md=output_dir / "step9_clinical_summary.md",
+        hashes_json=output_dir / "step10_artifact_hashes.json",
+        run_metadata_json=output_dir / "step10_run_metadata.json",
+    )
+
+
 def assert_prereqs(paths: PipelinePaths) -> None:
     if not paths.guideline_txt.exists():
         raise FileNotFoundError(f"Missing guideline file: {paths.guideline_txt}")
@@ -119,14 +146,15 @@ def assert_prereqs(paths: PipelinePaths) -> None:
 
 # -------------------- orchestration --------------------
 
-def run_all(*, repo_root: Path, resume: bool, write_hashes: bool) -> None:
-    paths = resolve_paths(repo_root)
+def _run_pipeline(
+    *,
+    paths: PipelinePaths,
+    resume: bool,
+    write_hashes: bool,
+    model_id: str,
+) -> None:
     assert_prereqs(paths)
 
-    # Keep this centralized (Step 5 currently hardcodes it too)
-    model_id = "microsoft/Phi-3-mini-4k-instruct"
-
-    # Import step runners
     from pipeline import (
         run_step1,
         run_step2,
@@ -139,12 +167,9 @@ def run_all(*, repo_root: Path, resume: bool, write_hashes: bool) -> None:
         run_step9,
     )
 
-    # NOTE:
-    # - expected_outputs=None means "do not check artifacts" (used for step2 to avoid editing it right now)
-    # - expected_outputs=[] is NOT used (it would break resume logic)
     steps: list[tuple[str, object, Optional[Sequence[Path]]]] = [
         ("step1", run_step1, [paths.step1_lines, paths.step1_chunks]),
-        ("step2", run_step2, None),  # prints only; no artifact check
+        ("step2", run_step2, None),
         ("step3", run_step3, [paths.step3_citation_index, paths.step3_citation_smoketest, paths.step3_snippets_md]),
         ("step4", run_step4, [paths.step4_sanity]),
         ("step5", run_step5, [paths.step5_extraction]),
@@ -158,14 +183,12 @@ def run_all(*, repo_root: Path, resume: bool, write_hashes: bool) -> None:
     skipped_steps: list[str] = []
 
     for step_name, step_module, expected_outputs in steps:
-        # resume only applies when we know what artifacts to check
         if resume and expected_outputs is not None and all(p.exists() for p in expected_outputs):
             skipped_steps.append(step_name)
             continue
 
         _call_step_module(step_module, step_name=step_name)
 
-        # fail-closed artifact checks
         if expected_outputs is not None:
             missing = [str(p) for p in expected_outputs if not p.exists()]
             if missing:
@@ -173,7 +196,6 @@ def run_all(*, repo_root: Path, resume: bool, write_hashes: bool) -> None:
 
         ran_steps.append(step_name)
 
-    # Integrity hashes
     hashes: dict[str, str] = {}
     if write_hashes:
         to_hash = [
@@ -192,10 +214,14 @@ def run_all(*, repo_root: Path, resume: bool, write_hashes: bool) -> None:
         ]
         for p in to_hash:
             if p.exists():
-                hashes[str(p.relative_to(paths.repo_root))] = sha256_file(p)
+                try:
+                    rel = p.relative_to(paths.repo_root)
+                    key = str(rel)
+                except ValueError:
+                    key = str(p)
+                hashes[key] = sha256_file(p)
         write_json(paths.hashes_json, {"sha256": hashes})
 
-    # Run metadata
     meta = {
         "success": True,
         "repo_root": str(paths.repo_root),
@@ -203,13 +229,49 @@ def run_all(*, repo_root: Path, resume: bool, write_hashes: bool) -> None:
         "skipped_steps": skipped_steps,
         "env": _env_snapshot(model_id=model_id),
         "artifacts": {
-            "workflow_json": str(paths.step7_workflow.relative_to(paths.repo_root)) if paths.step7_workflow.exists() else None,
-            "audit_md": str(paths.step8_audit_md.relative_to(paths.repo_root)) if paths.step8_audit_md.exists() else None,
-            "human_md": str(paths.step9_human_md.relative_to(paths.repo_root)) if paths.step9_human_md.exists() else None,
-            "hashes_json": str(paths.hashes_json.relative_to(paths.repo_root)) if (write_hashes and paths.hashes_json.exists()) else None,
+            "workflow_json": str(paths.step7_workflow),
+            "audit_md": str(paths.step8_audit_md),
+            "human_md": str(paths.step9_human_md),
+            "hashes_json": str(paths.hashes_json) if write_hashes and paths.hashes_json.exists() else None,
         },
     }
     write_json(paths.run_metadata_json, meta)
+
+
+def run_all(*, repo_root: Path, resume: bool, write_hashes: bool) -> None:
+    paths = resolve_paths(repo_root)
+    model_id = "microsoft/Phi-3-mini-4k-instruct"
+    _run_pipeline(
+        paths=paths,
+        resume=resume,
+        write_hashes=write_hashes,
+        model_id=model_id,
+    )
+
+
+def run_all_for_job(
+    *,
+    guideline_path: Path,
+    output_dir: Path,
+    model_id: str = "microsoft/Phi-3-mini-4k-instruct",
+    resume: bool = False,
+    write_hashes: bool = True,
+) -> None:
+    repo_root = Path(__file__).resolve().parents[1]
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    paths = resolve_paths_for_job(
+        repo_root=repo_root,
+        guideline_path=guideline_path,
+        output_dir=output_dir,
+    )
+
+    _run_pipeline(
+        paths=paths,
+        resume=resume,
+        write_hashes=write_hashes,
+        model_id=model_id,
+    )
 
 
 def main() -> None:

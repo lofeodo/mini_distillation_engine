@@ -379,9 +379,10 @@ def run_extraction(
     model_id: str,
     guideline_id: str = "inesss_hypertension",
     chunks_path: str = "outputs/step1_chunks.json",
+    lines_path: str = "outputs/step1_lines.json"
 ) -> Dict[str, Any]:
 
-    trace_index = build_trace_index()
+    trace_index = build_trace_index(lines_path=lines_path, chunks_path=chunks_path)
     chunks = read_json(chunks_path)
     llm = LocalLLM(model_id, seed=0)
 

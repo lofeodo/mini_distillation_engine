@@ -1,13 +1,15 @@
 # pipeline/run_step5.py
 from __future__ import annotations
 
+import os
+
 from .extract import run_extraction
 from .io_utils import write_json
 
 
 def main() -> None:
-    model_id = "microsoft/Phi-3-mini-4k-instruct"
-    guideline_id = "inesss_hypertension"
+    model_id = os.getenv("MODEL_ID", "microsoft/Phi-3-mini-4k-instruct")
+    guideline_id = os.getenv("GUIDELINE_ID", "inesss_hypertension")
 
     extraction_output = run_extraction(
         model_id=model_id,

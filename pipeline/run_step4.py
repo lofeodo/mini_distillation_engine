@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 
 from .llm import LocalLLM, GenerationConfig, build_json_only_prompt
@@ -32,13 +33,7 @@ def _extract_first_json_object(text: str) -> dict:
 
 
 def main() -> None:
-    # Option A: set env var MODEL_ID before running
-    #   Windows PowerShell:  $env:MODEL_ID="microsoft/Phi-3-mini-4k-instruct"
-    # Option B: hardcode it here temporarily
-    model_id = (Path(".") / "MODEL_ID.txt").read_text(encoding="utf-8").strip() if Path("MODEL_ID.txt").exists() else ""
-    if not model_id:
-        # Default fallback (change this if you want)
-        model_id = "microsoft/Phi-3-mini-4k-instruct"
+    model_id = os.getenv("MODEL_ID", "microsoft/Phi-3-mini-4k-instruct")
 
     llm = LocalLLM(
         model_name_or_path=model_id,

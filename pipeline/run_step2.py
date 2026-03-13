@@ -11,8 +11,7 @@ from pipeline.validate_workflow import validate_workflow_graph
 from pipeline.io_utils import write_json
 
 
-ROOT = Path(__file__).resolve().parents[1]
-CHUNKS_PATH = ROOT / "outputs" / "step1_chunks.json"
+CHUNKS_PATH = Path("outputs/step1_chunks.json")
 
 
 def load_chunks():

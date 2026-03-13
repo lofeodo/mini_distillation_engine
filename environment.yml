@@ -199,4 +199,7 @@ dependencies:
       - typer-slim==0.21.1
       - typing-inspection==0.4.2
       - wcwidth==0.6.0
+      - fastapi==0.117.1
+      - uvicorn[standard]==0.36.0
+      - python-multipart==0.0.20
 prefix: C:\Users\danie\anaconda3\envs\mde

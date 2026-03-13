@@ -109,3 +109,6 @@ tzdata @ file:///home/task_176829656558347/croot/python-tzdata_1768296637279/wor
 urllib3 @ file:///C:/Users/task_176781036207501/croot/urllib3_1767810484846/work
 wcwidth @ file:///home/conda/feedstock_root/build_artifacts/wcwidth_1769858610910/work
 win_inet_pton @ file:///C:/miniconda3/conda-bld/win_inet_pton_1761746276406/work
+fastapi==0.117.1
+uvicorn[standard]==0.36.0
+python-multipart==0.0.20
